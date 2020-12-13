@@ -13,16 +13,16 @@ enum ChemicaliteSetting {
 };
 typedef enum ChemicaliteSetting ChemicaliteSetting;
 
-enum ChemicaliteOption {
+enum ChemicaLiteOption {
   LOGGING_DISABLED, LOGGING_STDOUT, LOGGING_STDERR,
   CHEMICALITE_NUM_OPTIONS
 };
-typedef enum ChemicaliteOption ChemicaliteOption;
+typedef enum ChemicaLiteOption ChemicaLiteOption;
 
-const char * chemicalite_option_label(ChemicaliteOption option);
+const char * chemicalite_option_label(ChemicaLiteOption option);
 
-int chemicalite_set_option(ChemicaliteSetting setting, ChemicaliteOption value);
-int chemicalite_get_option(ChemicaliteSetting setting, ChemicaliteOption *pValue);
+int chemicalite_set_option(ChemicaliteSetting setting, ChemicaLiteOption value);
+int chemicalite_get_option(ChemicaliteSetting setting, ChemicaLiteOption *pValue);
 int chemicalite_set_int(ChemicaliteSetting setting, int value);
 int chemicalite_get_int(ChemicaliteSetting setting, int *pValue);
 int chemicalite_set_double(ChemicaliteSetting setting, double value);

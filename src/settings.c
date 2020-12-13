@@ -16,7 +16,7 @@ struct Setting {
   char key[16];
   SettingType type;
   union {
-    ChemicaliteOption option;
+    ChemicaLiteOption option;
     int32_t integer;
     double real;
   };
@@ -32,7 +32,7 @@ static Setting settings[] = {
 #endif
 };
 
-const char * chemicalite_option_label(ChemicaliteOption option)
+const char * chemicalite_option_label(ChemicaLiteOption option)
 {
   static const char * labels[] = {
     "disabled",
@@ -47,7 +47,7 @@ const char * chemicalite_option_label(ChemicaliteOption option)
 /*
 ** Settings getters and setters
 */
-int chemicalite_set_option(ChemicaliteSetting setting, ChemicaliteOption value)
+int chemicalite_set_option(ChemicaliteSetting setting, ChemicaLiteOption value)
 {
   if (settings[setting].type != OPTION) {
     return SQLITE_MISMATCH;
@@ -62,7 +62,7 @@ int chemicalite_set_option(ChemicaliteSetting setting, ChemicaliteOption value)
   return SQLITE_OK;
 }
 
-int chemicalite_get_option(ChemicaliteSetting setting, ChemicaliteOption *pValue)
+int chemicalite_get_option(ChemicaliteSetting setting, ChemicaLiteOption *pValue)
 {
   if (settings[setting].type != OPTION) {
     return SQLITE_MISMATCH;
@@ -301,7 +301,7 @@ static int settingsUpdate(sqlite3_vtab *pVTab, int argc, sqlite3_value **argv, s
     break;
   case SQLITE_TEXT:
     ; /* add an empty statement after the case label, because a declaration is following */
-    ChemicaliteOption option = CHEMICALITE_NUM_OPTIONS; /* initialize w/ invalid value */
+    ChemicaLiteOption option = CHEMICALITE_NUM_OPTIONS; /* initialize w/ invalid value */
     const char * value = (const char *) sqlite3_value_text(argv[3]);
     for (int i = 0; i < CHEMICALITE_NUM_OPTIONS; ++i) {
         if (!strcasecmp(value, chemicalite_option_label(i))) {
